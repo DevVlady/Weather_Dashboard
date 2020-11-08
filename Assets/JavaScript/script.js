@@ -1,5 +1,5 @@
 //Document ready function
-$(document).ready(function (){
+// $(document).ready(function (){
 
     $("#search-button").on("click", function(){
         //Search value variable
@@ -37,12 +37,14 @@ $(document).ready(function (){
             var cardBody = $("<div>").addClass("card-body");
 
             //Appending all variables/tags created above to the card in HTML
-            cardBody.append(title, condition, temp, tempLow, tempHigh, wind, humid); //Attach any other specifications of variables are created above
+            cardBody.append(title, condition, temp, tempLow, tempHigh, wind, humid);
             card.append(cardBody);
             $("#today").append(card);
         })
     }
 
+    //Console log
+    console.log(response);
 
 
 
@@ -57,5 +59,4 @@ $(document).ready(function (){
 
 
 
-
-})
+// })
