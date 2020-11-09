@@ -29,14 +29,14 @@
             //Created a card where the weather info will be appended to in the HTML file
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card");
-            var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0]}`);
+            var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].description}`);
             var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp}`);
             var tempLow = $("<p>").addClass("card-text").text(`Low Temp: ${data.main.temp_min}`);
             var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max}`);
             var wind = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed}`);
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
 
-            var cardBody = $("<div>").addClass("card-body col-md-9");
+            var cardBody = $("<div>").addClass("card-body");
 
             //Appending all variables/tags created above to the card in HTML
             cardBody.append(title, condition, temp, tempLow, tempHigh, wind, humid);
