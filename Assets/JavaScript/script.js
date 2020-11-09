@@ -63,8 +63,9 @@
 
 
     //Function to display the 5 day forecast
+    //TODO: Use a for loop to loop over all forecast by specs
     function forecastWeather() {
-        //Ajax used to obtain the UV index api
+        //Ajax used to obtain the 5 day forecast with api
         $.ajax({
             type: "GET",
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=8e7b50e448721200d703d303ab7dc6a5&units=imperial`,
@@ -79,6 +80,7 @@
     }
 
 
+    //TODO:Build a function to obtain search history & print it
 
 
 
