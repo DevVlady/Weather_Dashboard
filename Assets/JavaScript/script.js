@@ -1,15 +1,27 @@
 //Document ready function
 // $(document).ready(function () {
 
-    $("#search-button").on("click", function () {
+    $("#search-button").on("click", function (event) {
+        event.preventDefault();
         //Search value variable
         var searchValue = $("#search-value").val();
         //Pulling the search with a value
         $("#search-value").val("");
+        //Array for cities
+        var citiesSearch = [];
+
+        //Get item from local storage
+        citiesSearch = JSON.parse(localStorage.getItem("citiesSearch")) || [];
+        //History link for the search (.push)
+        citiesSearch.push(searchValue);
+        //Set item to local storage
+        localStorage.setItem("citiesSearch", JSON.stringify(citiesSearch));
+
         //Calling the SearchWeather function with a searchValue
         searchWeather(searchValue);
     });
 
+    //Latitude and lontitude
     let lat = "";
     let lon = "";
 
@@ -25,16 +37,13 @@
             console.log(data);
             lat = data.coord.lat;
             lon = data.coord.lon;
-            //History link for the search (.push)
-
-            //Local storage set item
 
             //Used to empty out the data after every search so its not dumped on top of one another
             $("#today").empty();
             //Created a card where the weather info will be appended to in the HTML file
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card");
-            var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].description}`);
+            var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].main}`);
             var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp}`);
             var tempLow = $("<p>").addClass("card-text").text(`Low Temp: ${data.main.temp_min}`);
             var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max}`);
@@ -60,6 +69,8 @@
             dataType: "json",
         })
         .then(function (data) {
+            //Creating the variable for the UV index
+
 
             // cardBody.append();
             // card.append(cardBody);
