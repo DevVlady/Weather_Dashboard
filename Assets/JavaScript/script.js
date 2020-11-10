@@ -10,6 +10,9 @@
         searchWeather(searchValue);
     });
 
+    let lat = "";
+    let lon = "";
+
     //Function to pull in date when info is put into the search input field
     function searchWeather(searchValue) {
         //Ajax used to obtain the weather api
@@ -20,6 +23,8 @@
         })
         .then(function (data) {
             console.log(data);
+            lat = data.coord.lat;
+            lon = data.coord.lon;
             //History link for the search (.push)
 
             //Local storage set item
@@ -35,13 +40,14 @@
             var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max}`);
             var wind = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed}`);
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
-
+            //Crating a variable which will then be appended to the html file
             var cardBody = $("<div>").addClass("card-body");
 
             //Appending all variables/tags created above to the card in HTML
             cardBody.append(title, condition, temp, tempLow, tempHigh, wind, humid);
             card.append(cardBody);
             $("#today").append(card);
+            uvIndex();
         })
     }
 
@@ -50,14 +56,15 @@
         //Ajax used to obtain the UV index api //TODO:Need lat & lon and unites after the API??
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}${searchValue}&appid=8e7b50e448721200d703d303ab7dc6a5`,
+            url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=8e7b50e448721200d703d303ab7dc6a5`,
             dataType: "json",
         })
         .then(function (data) {
 
-            cardBody.append();
-            card.append(cardBody);
-            $("#today").append(card);
+            // cardBody.append();
+            // card.append(cardBody);
+            // $("#today").append(card);
+            console.log(data);
         })
     }
 
@@ -81,6 +88,7 @@
 
 
     //TODO:Build a function to obtain search history & print it
+    //TODO: Reference gif activity in class
 
 
 
