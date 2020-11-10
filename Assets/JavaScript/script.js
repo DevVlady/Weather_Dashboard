@@ -99,6 +99,16 @@
 
 
     //TODO:Build a function to obtain search history & print it
+    function citiesSearched() {
+        //Empty out cities from array
+        $("#cities-list").empty();
+        var citiesLocalStorage = JSON.parse(localStorage.getItem("citiesSearch")) || [];
+        //Loop to display the cities searched within the array
+        for (var i = 0; i < citiesLocalStorage.length; i++) {
+            citiesFromLocal = citiesLocalStorage[i];
+        }
+
+    }
     //TODO: Reference gif activity in class
 
 
