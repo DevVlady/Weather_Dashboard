@@ -21,7 +21,7 @@
         searchWeather(searchValue);
     });
 
-    //Latitude and lontitude
+    //Latitude and longtitude
     let lat = "";
     let lon = "";
 
@@ -57,6 +57,7 @@
             card.append(cardBody);
             $("#today").append(card);
             uvIndex();
+            forecastWeather(searchValue);
         })
     }
 
@@ -72,17 +73,13 @@
             //Creating the variable for the UV index
 
 
-            // cardBody.append();
-            // card.append(cardBody);
-            // $("#today").append(card);
-            console.log(data);
         })
     }
 
 
     //Function to display the 5 day forecast
     //TODO: Use a for loop to loop over all forecast by specs
-    function forecastWeather() {
+    function forecastWeather(searchValue) {
         //Ajax used to obtain the 5 day forecast with api
         $.ajax({
             type: "GET",
@@ -90,10 +87,17 @@
             dataType: "json",
         })
         .then(function (data) {
+            // console.log(data)
+            for (var i = 0; i < data.list.length; i++) {
+                var date = $("<p>").addClass("card-text").text(`Date: ${data.list[i].dt_txt}`);
+                var icon = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max}`);
+                var temp = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed}`);
+                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
+                $("#today").append(date);
+            }
 
-            cardBody.append();
-            card.append(cardBody);
-            $("#today").append(card);
+
+
         })
     }
 
