@@ -1,6 +1,7 @@
 //Document ready function
 // $(document).ready(function () {
 
+
     $("#search-button").on("click", function (event) {
         event.preventDefault();
         //Search value variable
@@ -40,6 +41,10 @@
 
             //Used to empty out the data after every search so its not dumped on top of one another
             $("#today").empty();
+
+            //Date variable
+            // var date = moment().format('LL');
+
             //Created a card where the weather info will be appended to in the HTML file
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card");
