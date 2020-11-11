@@ -94,9 +94,10 @@
         .then(function (data) {
             console.log(data)
             //Created the for loop to loop through the forecast
-            for (var i = 0; i < data.list.length; i++) {
-                var title = $("<h3>").addClass("card-title").text(`Date: ${data.list[i].dt_txt}`);
-                var card = $("<div>").addClass("card");
+            for (var i = 0; i < data.list.length; i+= 8) {
+                var title = $("<h5>").addClass("card-title").text(`Date: ${data.list[i].dt_txt}`);
+                var row = $("<div>").addClass("row")
+                var card = $("<div>").addClass("card col-md-3");
                 var icon = $("<p>").addClass("card-text").text(`${data.list[i].weather[0].icon}`);
                 var temp = $("<p>").addClass("card-text").text(`Temp: ${data.list[i].main.temp} \u00B0F`);
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
@@ -106,6 +107,7 @@
                 cardBody.append(title, icon, temp, humid)
                 card.append(cardBody);
                 $("#today").append(card);
+                card.append(row);
             }
         })
     }
