@@ -44,11 +44,11 @@
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card");
             var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].main}`);
-            var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp}`);
-            var tempLow = $("<p>").addClass("card-text").text(`Low Temp: ${data.main.temp_min}`);
-            var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max}`);
-            var wind = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed}`);
-            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
+            var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp} \u00B0F`);
+            var tempLow = $("<p>").addClass("card-text").text(`Low Temp: ${data.main.temp_min} \u00B0F`);
+            var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max} \u00B0F`);
+            var wind = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed} MPH`);
+            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity} %`);
             //Crating a variable which will then be appended to the html file
             var cardBody = $("<div>").addClass("card-body");
 
@@ -87,17 +87,21 @@
             dataType: "json",
         })
         .then(function (data) {
-            // console.log(data)
+            console.log(data)
+            //Created the for loop to loop through the forecast
             for (var i = 0; i < data.list.length; i++) {
-                var date = $("<p>").addClass("card-text").text(`Date: ${data.list[i].dt_txt}`);
-                var icon = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max}`);
-                var temp = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed}`);
-                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
-                $("#today").append(date);
+                var title = $("<h3>").addClass("card-title").text(`Date: ${data.list[i].dt_txt}`);
+                var card = $("<div>").addClass("card");
+                var icon = $("<p>").addClass("card-text").text(`${data.list[i].weather[0].icon}`);
+                var temp = $("<p>").addClass("card-text").text(`Temp: ${data.list[i].main.temp} \u00B0F`);
+                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
+                //Card variable where all the info will be appended into
+                var cardBody = $("<div>").addClass("card-body");
+                //Append the cardbody into the card and all the info in the card body
+                cardBody.append(title, icon, temp, humid)
+                card.append(cardBody);
+                $("#today").append(card);
             }
-
-
-
         })
     }
 
