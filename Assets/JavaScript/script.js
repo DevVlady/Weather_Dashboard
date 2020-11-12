@@ -55,7 +55,7 @@
             var wind = $("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed} MPH`);
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity} %`);
             //Crating a variable which will then be appended to the html file
-            var cardBody = $("<div>").addClass("card-body");
+            var cardBody = $("<div>").addClass("card-body hmdt");
 
             //Appending all variables/tags created above to the card in HTML
             cardBody.append(title, condition, temp, tempLow, tempHigh, wind, humid);
@@ -76,16 +76,21 @@
         })
         .then(function (data) {
             //Creating the variable for the UV index
-            // var card = $("<div>").addClass("card");
-            var UvIndex = $("<p>").addClass("card-text").text(`UV-Index: ${data.value}`);
-            // var cardBody = $("<div>").addClass("card-body");
-
-            // cardBody.append(uvIndex);
-            // card.append(cardBody)
-            $("#today").append(UvIndex)
-
-
+            var uvIndex = $("<p>").addClass("card-text").text(`UV-Index: ${data.value}`);
+            var button = $("<button>").addClass("btn");
+            button.append(uvIndex)
+            $(".hmdt").append(button);
         })
+        //Show UV-Index in different colors based on number
+        // if (data.current.uvi < 3) {
+        //     $(".btn").addClass("green");
+        // }
+        // else if (data.current.uvi < 6) {
+        //     $(".btn").addClass("yellow");
+        // }
+        // else if (data.current.uvi < 8) {
+        //     $(".btn").addClass("orange");
+        // }
     }
 
 
