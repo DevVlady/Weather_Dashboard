@@ -22,7 +22,7 @@
         searchWeather(searchValue);
     });
 
-    //Latitude and longtitude
+    //Latitude and longitude
     let lat = "";
     let lon = "";
 
@@ -76,6 +76,13 @@
         })
         .then(function (data) {
             //Creating the variable for the UV index
+            // var card = $("<div>").addClass("card");
+            var UvIndex = $("<p>").addClass("card-text").text(`UV-Index: ${data.value}`);
+            // var cardBody = $("<div>").addClass("card-body");
+
+            // cardBody.append(uvIndex);
+            // card.append(cardBody)
+            $("#today").append(UvIndex)
 
 
         })
