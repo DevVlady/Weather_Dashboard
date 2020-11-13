@@ -1,6 +1,15 @@
 //Document ready function
 // $(document).ready(function () {
 
+    //Date variables
+    // var currentDate = moment().format('LL');
+    // var firstDay = moment().add(1, "days").format('LL');
+    // var secondDay = moment().add(2, "days").format('LL');
+    // var thirdDay = moment().add(3, "days").format('LL');
+    // var fourthDay = moment().add(4, "days").format('LL');
+    // var fifthDay = moment().add(5, "days").format('LL');
+
+
 
     $("#search-button").on("click", function (event) {
         event.preventDefault();
@@ -42,9 +51,6 @@
             //Used to empty out the data after every search so its not dumped on top of one another
             $("#today").empty();
 
-            //Date variable
-            // var date = moment().format('LL');
-
             //Created a card where the weather info will be appended to in the HTML file
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card oneday");
@@ -59,7 +65,7 @@
             var cardBody = $("<div>").addClass("card-body hmdt");
 
             //Appending all variables/tags created above to the card in HTML
-            cardBody.append(title,icon, condition, temp, tempLow, tempHigh, wind, humid);
+            cardBody.append(title, icon, condition, temp, tempLow, tempHigh, wind, humid);
             card.append(cardBody);
             $("#today").append(card);
             uvIndex();
@@ -78,20 +84,28 @@
         .then(function (data) {
             //Creating the variable for the UV index
             var uvIndex = $("<p>").addClass("card-text").text(`UV-Index: ${data.value}`);
-            var button = $("<button>").addClass("btn");
+            var button = $("<button>").addClass("btn uIndex");
             button.append(uvIndex)
             $(".hmdt").append(button);
+            //Console log data to get Uv-Index path
+            console.log(data)
+                    //Show UV-Index in different colors based on number
+            if (data.value < 3) {
+                $(".uIndex").addClass("low");
+            }
+            else if (data.value <= 6) {
+                $(".uIndex").addClass("moderate");
+            }
+            else if (data.value < 8) {
+                $(".uIndex").addClass("high");
+            }
+            else if (data.value < 11) {
+                $(".uIndex").addClass("veryHigh");
+            }
+            else if (data.value > 11) {
+                $(".uIndex").addClass("extreme");
+            }
         })
-        //Show UV-Index in different colors based on number
-        // if (data.current.uvi < 3) {
-        //     $(".btn").addClass("green");
-        // }
-        // else if (data.current.uvi < 6) {
-        //     $(".btn").addClass("yellow");
-        // }
-        // else if (data.current.uvi < 8) {
-        //     $(".btn").addClass("orange");
-        // }
     }
 
 
