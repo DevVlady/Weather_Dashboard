@@ -47,7 +47,7 @@
 
             //Created a card where the weather info will be appended to in the HTML file
             var title = $("<h3>").addClass("card-title").text(data.name);
-            var card = $("<div>").addClass("card");
+            var card = $("<div>").addClass("card oneday");
             var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].main}`);
             var icon = (`<img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`)
             var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp} \u00B0F`);
@@ -113,10 +113,11 @@
                 var card = $("<div>").addClass("card col-md-2 fiveday");
                 var temp = $("<p>").addClass("card-text").text(`Temp: ${data.list[i].main.temp} \u00B0F`);
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
+                var wind = $("<p>").addClass("card-text").text(`Wind: ${data.list[i].wind.speed} MPH`);
                 //Card variable where all the info will be appended into
                 var cardBody = $("<div>").addClass("card-body");
                 //Append the cardbody into the card and all the info in the card body
-                cardBody.append(title, icon, temp, humid)
+                cardBody.append(title, icon, temp, humid, wind)
                 card.append(cardBody);
                 $("#today").append(card);
             }
