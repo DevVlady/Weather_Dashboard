@@ -49,6 +49,7 @@
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card");
             var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].main}`);
+            var icon = (`<img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`)
             var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp} \u00B0F`);
             var tempLow = $("<p>").addClass("card-text").text(`Low Temp: ${data.main.temp_min} \u00B0F`);
             var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max} \u00B0F`);
@@ -58,7 +59,7 @@
             var cardBody = $("<div>").addClass("card-body hmdt");
 
             //Appending all variables/tags created above to the card in HTML
-            cardBody.append(title, condition, temp, tempLow, tempHigh, wind, humid);
+            cardBody.append(title,icon, condition, temp, tempLow, tempHigh, wind, humid);
             card.append(cardBody);
             $("#today").append(card);
             uvIndex();
@@ -107,9 +108,9 @@
             console.log(data)
             //Created the for loop to loop through the forecast
             for (var i = 0; i < data.list.length; i+= 8) {
+                var icon = (`<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">`);
                 var title = $("<h5>").addClass("card-title").text(`Date: ${data.list[i].dt_txt}`);
                 var card = $("<div>").addClass("card col-md-2 fiveday");
-                var icon = $("<p>").addClass("card-text").text(`${data.list[i].weather[0].icon}`);
                 var temp = $("<p>").addClass("card-text").text(`Temp: ${data.list[i].main.temp} \u00B0F`);
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
                 //Card variable where all the info will be appended into
