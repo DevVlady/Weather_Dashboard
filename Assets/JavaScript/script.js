@@ -11,7 +11,7 @@ $(document).ready(function () {
         var citiesSearch = [];
 
         //Get item from local storage
-        // citiesSearch = JSON.parse(localStorage.getItem("citiesSearch")) || [];
+        citiesSearch = JSON.parse(localStorage.getItem("citiesSearch")) || [];
         //History link for the search (.push)
         citiesSearch.push(searchValue);
         //Set item to local storage
@@ -139,8 +139,18 @@ $(document).ready(function () {
         //Loop to display the cities searched within the array
         for (var i = 0; i < citiesLocalStorage.length; i++) {
             citiesFromLocal = citiesLocalStorage[i];
+            //Creating variables and appending the data to html
+            // var history = $("<p>").addClass("searchHistory");
+            // history.append(citiesFromLocal);
+            $("#cities-list").append("<div>" + "<button class='itemList' >" + citiesFromLocal + "</button>");
         }
-
     }
     citiesSearched();
+
+    $("#cities-list").on("click", ".itemList", function(event){
+        event.preventDefault();
+        var searchedCity = ($(this).text());
+        searchWeather(searchedCity);
+    })
+
 })
