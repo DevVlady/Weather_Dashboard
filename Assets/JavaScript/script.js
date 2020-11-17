@@ -139,10 +139,7 @@ $(document).ready(function () {
         //Loop to display the cities searched within the array
         for (var i = 0; i < citiesLocalStorage.length; i++) {
             citiesFromLocal = citiesLocalStorage[i];
-            //Creating variables and appending the data to html
-            // var history = $("<p>").addClass("searchHistory");
-            // history.append(citiesFromLocal);
-            $("#cities-list").append("<div>" + "<button class='itemList' >" + citiesFromLocal + "</button>");
+            $("#cities-list").append("<div>" + "<button class='itemList btn btn-primary' >" + citiesFromLocal + "</button>");
         }
     }
     citiesSearched();

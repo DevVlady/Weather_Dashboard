@@ -39,3 +39,8 @@ img {
 .extreme {
     background-color: violet;
 }
+
+.itemList {
+    margin: 1px;
+    width: 235px;
+}
