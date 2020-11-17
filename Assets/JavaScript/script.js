@@ -1,15 +1,5 @@
 //Document ready function
-// $(document).ready(function () {
-
-    //Date variables
-    // var currentDate = moment().format('LL');
-    // var firstDay = moment().add(1, "days").format('LL');
-    // var secondDay = moment().add(2, "days").format('LL');
-    // var thirdDay = moment().add(3, "days").format('LL');
-    // var fourthDay = moment().add(4, "days").format('LL');
-    // var fifthDay = moment().add(5, "days").format('LL');
-
-
+$(document).ready(function () {
 
     $("#search-button").on("click", function (event) {
         event.preventDefault();
@@ -21,7 +11,7 @@
         var citiesSearch = [];
 
         //Get item from local storage
-        citiesSearch = JSON.parse(localStorage.getItem("citiesSearch")) || [];
+        // citiesSearch = JSON.parse(localStorage.getItem("citiesSearch")) || [];
         //History link for the search (.push)
         citiesSearch.push(searchValue);
         //Set item to local storage
@@ -89,7 +79,7 @@
             $(".hmdt").append(button);
             //Console log data to get Uv-Index path
             console.log(data)
-                    //Show UV-Index in different colors based on number
+            //Show UV-Index in different colors based on number
             if (data.value < 3) {
                 $(".uIndex").addClass("low");
             }
@@ -108,7 +98,6 @@
         })
     }
 
-
     //Function to display the 5 day forecast
     //TODO: Use a for loop to loop over all forecast by specs
     function forecastWeather(searchValue) {
@@ -121,9 +110,15 @@
         .then(function (data) {
             console.log(data)
             //Created the for loop to loop through the forecast
-            for (var i = 0; i < data.list.length; i+= 8) {
+            for (var i = 4; i < data.list.length; i+= 8) {
+                //Setting date format using variables & strings
+                var setDate = data.list[i].dt_txt;
+                setDate = setDate.split("-");
+                var month = setDate[1];
+                var day = setDate[2].slice(0, 2);
+                var year = setDate[0];
                 var icon = (`<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">`);
-                var title = $("<h5>").addClass("card-title").text(`Date: ${data.list[i].dt_txt}`);
+                var title = $("<h5>").addClass("card-title").text(`Date: ${month} /${day} / ${year}`);
                 var card = $("<div>").addClass("card col-md-2 fiveday");
                 var temp = $("<p>").addClass("card-text").text(`Temp: ${data.list[i].main.temp} \u00B0F`);
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
@@ -138,11 +133,8 @@
         })
     }
 
-
     //TODO:Build a function to obtain search history & print it
     function citiesSearched() {
-        //Empty out cities from array
-        $("#cities-list").empty();
         var citiesLocalStorage = JSON.parse(localStorage.getItem("citiesSearch")) || [];
         //Loop to display the cities searched within the array
         for (var i = 0; i < citiesLocalStorage.length; i++) {
@@ -150,9 +142,5 @@
         }
 
     }
-    //TODO: Reference gif activity in class
-
-
-
-
-// })
+    citiesSearched();
+})
