@@ -135,7 +135,7 @@ $(document).ready(function () {
 
     //TODO:Build a function to obtain search history & print it
     function citiesSearched() {
-        // var citiesLocalStorage = JSON.parse(localStorage.getItem("citiesSearch")) || [];
+        var citiesLocalStorage = JSON.parse(localStorage.getItem("citiesSearch")) || [];
         //Loop to display the cities searched within the array
         for (var i = 0; i < citiesLocalStorage.length; i++) {
             citiesFromLocal = citiesLocalStorage[i];
