@@ -6,4 +6,6 @@ In this project there were 3 different API's used to obtain this information, on
 
 The languages and technologies used in this project are HTML5, CSS3, jQuery, JavaScript, OpenWeather API's, & Moment.js.
 
+Deployed Site: https://vlady14.github.io/Weather_Dashboard/
+
 ![image](https://user-images.githubusercontent.com/71519918/99339844-7de95000-284c-11eb-9834-4bc9b2c7757f.png)
