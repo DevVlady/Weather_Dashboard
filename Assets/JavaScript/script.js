@@ -64,11 +64,11 @@ $(document).ready(function () {
     }
 
     //Function to provide UV index
-    function uvIndex() {
+    function uvIndex(lat, lon) {
         //Ajax used to obtain the UV index api //TODO:Need lat & lon and unites after the API??
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=8e7b50e448721200d703d303ab7dc6a5`,
+            url: `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=8e7b50e448721200d703d303ab7dc6a5`,
             dataType: "json",
         })
         .then(function (data) {
@@ -104,7 +104,7 @@ $(document).ready(function () {
         //Ajax used to obtain the 5 day forecast with api
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=8e7b50e448721200d703d303ab7dc6a5&units=imperial`,
+            url: `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=8e7b50e448721200d703d303ab7dc6a5&units=imperial`,
             dataType: "json",
         })
         .then(function (data) {
