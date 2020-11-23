@@ -135,6 +135,8 @@ $(document).ready(function () {
 
     //TODO:Build a function to obtain search history & print it
     function citiesSearched() {
+        //Clear the list
+        $("#cities-list").empty()
         var citiesLocalStorage = JSON.parse(localStorage.getItem("citiesSearch")) || [];
         //Loop to display the cities searched within the array
         for (var i = 0; i < citiesLocalStorage.length; i++) {
@@ -149,5 +151,4 @@ $(document).ready(function () {
         var searchedCity = ($(this).text());
         searchWeather(searchedCity);
     })
-
 })
