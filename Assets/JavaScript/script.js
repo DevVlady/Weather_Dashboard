@@ -45,7 +45,7 @@ $(document).ready(function () {
             var title = $("<h3>").addClass("card-title").text(data.name);
             var card = $("<div>").addClass("card oneday");
             var condition = $("<p>").addClass("card-text").text(`Weather Conditions: ${data.weather[0].main}`);
-            var icon = (`<img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`)
+            var icon = (`<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`)
             var temp = $("<p>").addClass("card-text").text(`Temperature: ${data.main.temp} \u00B0F`);
             var tempLow = $("<p>").addClass("card-text").text(`Low Temp: ${data.main.temp_min} \u00B0F`);
             var tempHigh = $("<p>").addClass("card-text").text(`High Temp: ${data.main.temp_max} \u00B0F`);
@@ -64,7 +64,7 @@ $(document).ready(function () {
     }
 
     //Function to provide UV index
-    function uvIndex(lat, lon) {
+    function uvIndex() {
         //Ajax used to obtain the UV index api //TODO:Need lat & lon and unites after the API??
         $.ajax({
             type: "GET",
@@ -117,7 +117,7 @@ $(document).ready(function () {
                 var month = setDate[1];
                 var day = setDate[2].slice(0, 2);
                 var year = setDate[0];
-                var icon = (`<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">`);
+                var icon = (`<img src="https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">`);
                 var title = $("<h5>").addClass("card-title").text(`Date: ${month} /${day} / ${year}`);
                 var card = $("<div>").addClass("card col-md-2 fiveday");
                 var temp = $("<p>").addClass("card-text").text(`Temp: ${data.list[i].main.temp} \u00B0F`);
