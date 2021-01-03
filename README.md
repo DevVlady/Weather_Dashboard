@@ -1,11 +1,56 @@
 # Weather Dashboard
 
-Description: Using the search filed at the top, enter a city name to display current weather information such as, low, high, & current temps, wind speed, weather conditions and humidity. Below the current weather information you will find the 5 day forecast information allowing you to plan your week accordingly around the weather.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-In this project there were 3 different API's used to obtain this information, one for each section of the webpage. The 3 API's used are one for the UV-Index, current weather information, and lastly the 5 day forecast. API's are in 3rd party available to the public allowing web developers to create such platforms/projects with a url address specific to that topic.
+## Description
 
-The languages and technologies used in this project are HTML5, CSS3, jQuery, JavaScript, OpenWeather API's, & Moment.js.
+Using the search filed at the top, enter a city name to display current weather information such as, low, high, & current temps, wind speed, weather conditions and humidity. Below the current weather information you will find the 5 day forecast information allowing you to plan your week accordingly around the weather
 
-Deployed Site: https://vlady14.github.io/Weather_Dashboard/
+## Table of Contents
 
-![image](https://user-images.githubusercontent.com/71519918/99339844-7de95000-284c-11eb-9834-4bc9b2c7757f.png)
+* [License](#license)
+
+* [Image](#image)
+
+* [Website](#website)
+
+* [Usage](#usage)
+
+* [Contributing](#contributing)
+
+* [Technologies](#technologies)
+
+* [Questions](#questions)
+
+## License
+
+This project is licensed under the MIT license
+
+## Image
+
+![image](https://user-images.githubusercontent.com/71519918/103469417-19198480-4d2a-11eb-9e64-bfb8a4c2f5de.png)
+
+## Website
+
+Deploy Link: https://vlady14.github.io/Weather_Dashboard/
+
+## Usage
+
+Steps on how to properly use the weather dashboard application are provided below.
+
+* TO start you can launch the application using the link provided in this document.
+* THEN enter a city of your choice and you will be provided with a display of the weather for the city you entered along with 5 day forecast.
+* SELECT the cities on the left below the search button whcih are cities you have done a search for to view the forecast again.
+
+## Contributing
+
+This project/repo has been contributed by Vladimir Dimitrov. Anyone can contribute to this project/repo by either reaching out to the owner or using the fork method through GitHub
+
+## Technologies
+
+Technologies, applications, and programs used in this project are HTML5, CSS3, JavaScript,OpenWeather  API's, jQuery, & Moment.js
+
+## Questions
+
+If you have any questions about the project/repo, please open an issue or contact me directly at <vladimir.s.dimitrov14@gmail.com>.
+You can find more of my work at Vlady14 (https://github.com/Vlady14).
