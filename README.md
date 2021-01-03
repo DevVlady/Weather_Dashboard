@@ -48,7 +48,7 @@ This project/repo has been contributed by Vladimir Dimitrov. Anyone can contribu
 
 ## Technologies
 
-Technologies, applications, and programs used in this project are HTML5, CSS3, JavaScript,OpenWeather  API's, jQuery, & Moment.js
+Technologies, applications, and programs used in this project are HTML5, CSS3, JavaScript, OpenWeather API's, jQuery, & Moment.js
 
 ## Questions
 
